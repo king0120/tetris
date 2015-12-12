@@ -1,10 +1,22 @@
+.container {
+  display: flex;
+  flex-flow: center no-wrap; }
+
 li {
   float: left;
   width: 100px; }
+
+.stats {
+  width: 10%;
+  float: left; }
 
 h2 {
   background: red; }
 
 canvas {
+  margin: 0 auto;
   background: beige;
-  float: left; }
+  float: left;
+  position: relative;
+  top: 50%;
+  transform: translateY(5%); }

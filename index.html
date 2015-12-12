@@ -2,9 +2,10 @@
 <html>
   <head>
     <title>Tetris | WDI 5</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"/>
     <link rel="stylesheet" href="css/style.css"/>
   </head>
-  <body>
+  <body>(onload="init()")
     <div class="container">
       <h2 class="wdi5"></h2>
       <div class="stats">
@@ -33,9 +34,11 @@
           </li>
         </ul>
       </div>
-      <canvas id="canvas"></canvas>
+      <canvas id="canvas"> This text is displayed if your browser does not support HTML5 Canvas.</canvas>
+      <button onclick="newRect()">create rectangle</button>
     </div>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/generator.js"></script>
     <script src="js/rectBuilder.js"></script>
     <script src="js/app.js"></script>
   </body>

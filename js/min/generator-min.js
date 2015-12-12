@@ -1,0 +1,1 @@
+function randomColor(){var o=Math.floor(255*Math.random()),r=Math.floor(255*Math.random()),a=Math.floor(255*Math.random());return"rgb("+o+","+r+","+a+")"}

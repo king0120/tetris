@@ -1,8 +1,9 @@
 html
   head
     title Tetris | WDI 5
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css")
     link(rel="stylesheet", href="css/style.css")
-  body
+  body (onload="init()")
     .container
       h2.wdi5
       .stats
@@ -29,8 +30,10 @@ html
           li
             img
             h4
-      canvas(id='canvas')
+      canvas(id='canvas')  This text is displayed if your browser does not support HTML5 Canvas.
+      button(onclick='newRect()') create rectangle
     script(src='http://code.jquery.com/jquery-1.11.3.min.js')
+    script(src='js/generator.js')
     script(src='js/rectBuilder.js')
     script(src='js/app.js')
 
