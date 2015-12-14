@@ -1,4 +1,4 @@
-//@codekit-prepend 'rectBuilder.js';
+//@codekit-prepend 'tetrinos.js';
 
 
 // document.querySelector('canvas').on('click', function(event) {

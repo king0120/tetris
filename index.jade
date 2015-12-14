@@ -5,38 +5,57 @@ html
     link(rel="stylesheet", href="css/style.css")
   body
     .container
-      h2.wdi5
-      .stats
-        h2 Statistics
-        ul
-          li
-            img
-            h4
-          li
-            img
-            h4
-          li
-            img
-            h4
-          li
-            img
-            h4
-          li
-            img
-            h4
-          li
-            img
-            h4
-          li
-            img
-            h4
+      .left
+        .emptyBox
+        h2.wdi5
+        .stats
+          h2 Statistics
+          ul
+            li
+              img(src='images/tBlock.png')
+              h4 000
+            li
+              img(src='images/jBlock.png')
+              h4 000
+            li
+              img(src='images/sBlock.png')
+              h4 000
+            li
+              img(src='images/iBlock.png')
+              h4 000
+            li
+              img(src='images/oBlock.png')
+              h4 000
+            li
+              img(src='images/zBlock.png')
+              h4 000
+            li
+              img(src='images/lBlock.png')
+              h4 000
       canvas(id='canvas')  This text is displayed if your browser does not support HTML5 Canvas.
+      .right
+        .next
+          h2 Next
+          img
+        h1.title TETRIS
+        .score
+          h2 Score
+          h4 TOP
+          h3 1000000
+          h4 SCORE
+          h3 1000000
+        .lines
+          h2 Lines
+          h2 0020
+        .level
+          h2 Level
+          h2 04
       button(onclick='canva.newRect()') create rectangle
     script(src='js/generator.js')
     //- script(src='http://code.jquery.com/jquery-1.11.3.min.js')
     script(src='js/rectangle.js')
     script(src='js/canvasState.js')
-    script(src='js/rectBuilder.js')
+    script(src='js/tetrinos.js')
     script(src='js/app.js')
 
 

@@ -7,40 +7,64 @@
   </head>
   <body>
     <div class="container">
-      <h2 class="wdi5"></h2>
-      <div class="stats">
-        <h2>Statistics</h2>
-        <ul>
-          <li><img/>
-            <h4></h4>
-          </li>
-          <li><img/>
-            <h4></h4>
-          </li>
-          <li><img/>
-            <h4></h4>
-          </li>
-          <li><img/>
-            <h4></h4>
-          </li>
-          <li><img/>
-            <h4></h4>
-          </li>
-          <li><img/>
-            <h4></h4>
-          </li>
-          <li><img/>
-            <h4></h4>
-          </li>
-        </ul>
+      <div class="left">
+        <div class="emptyBox"></div>
+        <h2 class="wdi5"></h2>
+        <div class="stats">
+          <h2>Statistics</h2>
+          <ul>
+            <li><img src="images/tBlock.png"/>
+              <h4>000</h4>
+            </li>
+            <li><img src="images/jBlock.png"/>
+              <h4>000</h4>
+            </li>
+            <li><img src="images/sBlock.png"/>
+              <h4>000</h4>
+            </li>
+            <li><img src="images/iBlock.png"/>
+              <h4>000</h4>
+            </li>
+            <li><img src="images/oBlock.png"/>
+              <h4>000</h4>
+            </li>
+            <li><img src="images/zBlock.png"/>
+              <h4>000</h4>
+            </li>
+            <li><img src="images/lBlock.png"/>
+              <h4>000</h4>
+            </li>
+          </ul>
+        </div>
       </div>
       <canvas id="canvas"> This text is displayed if your browser does not support HTML5 Canvas.</canvas>
+      <div class="right">
+        <div class="next">
+          <h2>Next</h2><img/>
+        </div>
+        <h1 class="title">TETRIS</h1>
+        <div class="score">
+          <h2>Score</h2>
+          <h4>TOP</h4>
+          <h3>1000000</h3>
+          <h4>SCORE</h4>
+          <h3>1000000</h3>
+        </div>
+        <div class="lines">
+          <h2>Lines</h2>
+          <h2>0020</h2>
+        </div>
+        <div class="level">
+          <h2>Level</h2>
+          <h2>04</h2>
+        </div>
+      </div>
       <button onclick="canva.newRect()">create rectangle</button>
     </div>
     <script src="js/generator.js"></script>
     <script src="js/rectangle.js"></script>
     <script src="js/canvasState.js"></script>
-    <script src="js/rectBuilder.js"></script>
+    <script src="js/tetrinos.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

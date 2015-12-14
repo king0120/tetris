@@ -4,21 +4,128 @@
   transform: translateY(5%)
 
 .container
+  margin: 0 auto
+  width: 95%
+  background: black
   display: flex
-  flex-flow: center no-wrap
+  flex-direction: row
+  flex-wrap: no-wrap
+  justify-content: center
 
-li
-  float: left
-  width: 100px
-.stats
-  width: 10%
-  float: left
+
+
+button
+  position: absolute
+  top: 0
+  right: 0
+  height: 50px
 
 h2
-  background: red
+
 
 canvas
-  margin: 0 auto
   background: beige
   float: left
+  max-width: 400px
+  margin: 0 2.5%
   @include vertical-align()
+
+.right, .left
+  height: 90%
+  width: 22.5%
+  @include vertical-align()
+  background: silver
+
+
+
+.left
+  .emptyBox
+    height: 25%
+    width: 100%
+    background: red
+
+  .stats
+    margin-top: 16%
+    margin-bottom: 15%
+    margin-left: 4%
+    margin-right: 3%
+    height: 70%
+    width: 90%
+    background: grey
+
+    h2
+      font-size: 2.6rem
+      margin-bottom: -5%
+
+    ul
+      padding: 0
+
+    li
+      height: 75px
+      margin: 0
+      margin-bottom: 2%
+      width: 100%
+      max-width: 225px
+      list-style-type: none
+      h4
+        float: right
+        font-size: 2.6rem
+        margin: 7% 4%
+        text-align: right
+      img
+        width: 100%
+        margin: 0
+      &:nth-child(1)
+        img
+          margin: 15px-2px 15px-2px
+          width: 70px
+      &:nth-child(2)
+        img
+          margin: 15px
+          width: 70px
+      &:nth-child(3)
+        img
+          margin: 15px-9px 15px-11px
+          width: 90px
+      &:nth-child(4)
+        img
+          margin: 15px
+          width: 70px
+      &:nth-child(5)
+        img
+          margin: 15px 15px+15px
+          width: 40px
+      &:nth-child(6)
+        img
+          margin: 15px-3px 15px-5px
+          width: 70px
+      &:nth-child(7)
+        img
+          margin: 15px-6px 15px-7px
+          width: 70px
+
+.next
+  width: 100%
+  height: 10%
+  background: blue
+
+.title
+  background: yellow
+
+.score
+  width: 100%
+  height: 25%
+  background: green
+  margin-top: 3%
+
+.lines
+  width: 100%
+  height: 10%
+  background: purple
+  margin-top: 3%
+
+.level
+  width: 100%
+  height: 10%
+  background: orange
+  margin-top: 3%
