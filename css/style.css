@@ -1,7 +1,14 @@
+body {
+  background-color: #000;
+  background-image: url("http://www.transparenttextures.com/patterns/brick-wall.png");
+  font-family: "Rationale"; }
+
+* {
+  border-radius: 5px; }
+
 .container {
   margin: 0 auto;
   width: 95%;
-  background: black;
   display: flex;
   flex-direction: row;
   flex-wrap: no-wrap;
@@ -14,9 +21,10 @@ button {
   height: 50px; }
 
 canvas {
-  background: beige;
+  background: rgba(255, 255, 255, 0.3);
   float: left;
   max-width: 400px;
+  border-radius: 0;
   margin: 0 2.5%;
   position: relative;
   top: 50%;
@@ -28,25 +36,32 @@ canvas {
   position: relative;
   top: 50%;
   transform: translateY(5%);
-  background: silver; }
+  background: rgba(255, 255, 255, 0.3); }
 
 .left .emptyBox {
-  height: 25%;
-  width: 100%;
-  background: red; }
+  height: 0%;
+  width: 100%; }
 .left .stats {
-  margin-top: 16%;
-  margin-bottom: 15%;
-  margin-left: 4%;
-  margin-right: 3%;
-  height: 70%;
+  margin: 0 auto;
+  max-height: 90%;
   width: 90%;
-  background: grey; }
+  background: rgba(255, 255, 255, 0.6);
+  border: solid black 3px;
+  position: relative;
+  top: 50%;
+  transform: translateY(5%);
+  transform: translateY(-50%); }
   .left .stats h2 {
     font-size: 2.6rem;
-    margin-bottom: -5%; }
+    margin-bottom: -5%;
+    text-align: center; }
   .left .stats ul {
-    padding: 0; }
+    padding: 0;
+    margin: 10% 10%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: no-wrap;
+    justify-content: flex-start; }
   .left .stats li {
     height: 75px;
     margin: 0;
@@ -84,28 +99,68 @@ canvas {
       margin: 9px 8px;
       width: 70px; }
 
-.next {
+.right .next {
+  margin: 5% auto;
+  width: 80%;
+  height: 20%;
+  background: rgba(0, 0, 255, 0.6);
+  border: solid black 2px; }
+  .right .next h2 {
+    margin: 0;
+    font-size: 2.6rem;
+    text-align: center; }
+  .right .next img {
+    width: 50%;
+    margin: 12.5% 25%; }
+.right .title {
+  text-align: center;
+  margin: 0;
   width: 100%;
-  height: 10%;
-  background: blue; }
-
-.title {
-  background: yellow; }
-
-.score {
-  width: 100%;
+  font-size: 5rem;
+  margin: 10% 0;
+  font-family: "Audiowide";
+  color: #0064fe;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 3px 3px 0px #57ff96, 5px 5px 0px rgba(255, 87, 150, 0.8), 5px 7px 0px rgba(255, 87, 150, 0.5); }
+.right .score {
+  background: rgba(255, 255, 255, 0.6);
+  width: 90%;
+  margin: 0 auto;
   height: 25%;
-  background: green;
   margin-top: 3%; }
-
-.lines {
-  width: 100%;
+  .right .score h2 {
+    font-size: 2.6rem;
+    margin: 0 0 10px 5px; }
+  .right .score h3 {
+    font-size: 2.2rem;
+    margin: 0 0 20px 15px; }
+  .right .score h4 {
+    font-size: 1.5rem;
+    margin: 0 0 0px 5px; }
+.right .lines {
+  width: 90%;
+  height: 15%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 30px;
+  background: rgba(255, 255, 255, 0.6);
+  margin-top: 3%; }
+  .right .lines h2 {
+    font-size: 2.6rem;
+    margin: 0; }
+  .right .lines h3 {
+    font-size: 2rem;
+    margin-top: 0; }
+.right .level {
+  width: 90%;
   height: 10%;
-  background: purple;
-  margin-top: 3%; }
-
-.level {
-  width: 100%;
-  height: 10%;
-  background: orange;
-  margin-top: 3%; }
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 0px;
+  background: rgba(255, 255, 255, 0.6);
+  margin-top: 5%; }
+  .right .level h2 {
+    font-size: 2.6rem;
+    margin: 0; }
+  .right .level h3 {
+    font-size: 2rem;
+    margin-top: 0; }

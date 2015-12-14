@@ -1,15 +1,14 @@
 html
   head
     title Tetris | WDI 5
+    link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Rationale|Iceland|Allerta+Stencil|Audiowide|Asap|Quicksand|Source+Code+Pro')
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css")
     link(rel="stylesheet", href="css/style.css")
   body
     .container
       .left
-        .emptyBox
-        h2.wdi5
         .stats
-          h2 Statistics
+          h2 STATISTICS
           ul
             li
               img(src='images/tBlock.png')
@@ -35,27 +34,27 @@ html
       canvas(id='canvas')  This text is displayed if your browser does not support HTML5 Canvas.
       .right
         .next
-          h2 Next
-          img
+          h2 NEXT
+          img(src='images/iBlock.png')
         h1.title TETRIS
         .score
-          h2 Score
+          h2 SCORE
           h4 TOP
           h3 1000000
           h4 SCORE
           h3 1000000
         .lines
-          h2 Lines
-          h2 0020
+          h2 LINES
+          h3 0020
         .level
-          h2 Level
-          h2 04
+          h2 LEVEL
+          h3 04
       button(onclick='canva.newRect()') create rectangle
     script(src='js/generator.js')
     //- script(src='http://code.jquery.com/jquery-1.11.3.min.js')
     script(src='js/rectangle.js')
-    script(src='js/canvasState.js')
     script(src='js/tetrinos.js')
+    script(src='js/canvasState.js')
     script(src='js/app.js')
 
 

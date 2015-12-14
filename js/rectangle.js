@@ -7,10 +7,10 @@ var ctx = canvas.getContext('2d');
 
 //This sets the global size for an individual block.  the tWidth is set
 //slightly smaller to avoid collision detection bugs.
-var tWidth= window.innerWidth / 10.1;
-var tHeight= window.innerHeight / 20.9;
+var tWidth= (window.innerWidth-1) / 10;
+var tHeight= (window.innerHeight-1) / 20;
 
-var Rectangle = function(x, y, w, h) {
+var Rectangle = function(x, y, color, w, h) {
   this.x = x;
   this.y = y;
   this.w = w;
@@ -20,14 +20,13 @@ var Rectangle = function(x, y, w, h) {
   //the floor and walls of the game board need custom widths and height, so I
   //made those perimeters available, but I created these default values to
   //make it easier to declare new rectangles
-  if (y=== undefined || w === undefined || h === undefined) {
-    this.y = 0;
+  if (w === undefined || h === undefined) {
     this.w = tWidth;
     this.h = tHeight;
   }
 
   //this will be changed later when tetrinos have their own objects
-  this.color = randomColor();
+  this.color = color;
 };
 
 //This is the canvas draw function.  It is used at the end of CanvasState.draw
@@ -38,17 +37,12 @@ Rectangle.prototype.draw = function() {
 };
 
 //For use in the key controls
-Rectangle.prototype.moveRight = function(){
-  return this.x += tWidth;
-};
 
-//for use in key controls
-Rectangle.prototype.moveLeft = function(){
-  return this.x -= tWidth;
-};
+
+
 
 Rectangle.prototype.drop = function(){
-  this.y += tHeight/10;
+  this.y += tHeight/5;
 };
 
 //This detects if either this or the declared function intersects on any
