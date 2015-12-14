@@ -12,6 +12,7 @@ var canva;
 function init(){
   window.console.log("Started");
   canva = new CanvasState(document.getElementById('canvas'));
+
 }
 
 

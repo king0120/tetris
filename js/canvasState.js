@@ -1,4 +1,4 @@
-//@codekit-prepend 'rectangle.js';
+
 //@codekit-prepend 'tetrinos.js';
 
 //Function CanvasState draws a new canvas ehen the function is initiated
@@ -16,7 +16,7 @@ function CanvasState(canvas1) {
   canvas1.width = window.innerWidth;
   canvas1.style.width = '45%';
   canvas1.style.height = '90%';
-  this.ctx = ctx;
+  this.ctx = this.canvas.getContext('2d');
 
   //Falling shapes are in the this.shapes array.  Each time the canvas draws,
   //it moves this array closer to the this.fallen array.
@@ -28,34 +28,30 @@ function CanvasState(canvas1) {
   //this.clear allows the canvas to animate.  Each time the canvas is wiped
   //it redraws the elements in the fallen array.
   this.clear = function() {
-    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.fallen[0].draw(ctx);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.fallen[0].draw(this.ctx);
     for (var i = 0; i < this.fallen.length; i++) {
-        this.fallen[i].color = 'purple';
-        this.fallen[i].draw(ctx);
+      this.fallen[i].color = 'purple';
+      this.fallen[i].draw(this.ctx);
     }
   };
 
-//for use in key controls
-  var moveLeft = function(b){
-    console.log(b);
+  //for use in key controls
+  var moveLeft = function(b) {
     for (var i = 0; i < b.length; i++) {
       b[i].x -= tWidth;
     }
   };
-  var moveRight = function(b){
-    console.log(b);
-   for (var i = 0; i < b.length; i++) {
+  var moveRight = function(b) {
+    for (var i = 0; i < b.length; i++) {
       b[i].x += tWidth;
     }
-};
-
-
-
-
-
-
-
+  };
+  var moveDown = function(b) {
+    for (var i = 0; i < b.length; i++) {
+      b[i].y += tHeight;
+    }
+  };
 
   //Sets key bindings for controlling the tetrinos.
   this.keyControls = function(toMove) {
@@ -87,11 +83,13 @@ function CanvasState(canvas1) {
           break;
         case 82: //the letter S
           window.console.log("Down");
-         // this.y += tHeight;
+          moveDown(toMove);
+          // this.y += tHeight;
           break;
         case 40: //down arrow key
           window.console.log("Down");
-       //   this.y += tHeight;
+          moveDown(toMove);
+          //   this.y += tHeight;
           break;
         default:
           window.console.log(e.which);
@@ -105,9 +103,12 @@ function CanvasState(canvas1) {
   //Not 100% sure why I needed to make this a variable to get this to work?
   var myState = this;
   myState.interval = 33;
-  var intervals = setInterval(function() {
+
+  function drawing() {
     myState.draw();
-  }, myState.interval);
+  }
+  setInterval(drawing, myState.interval);
+
 }
 
 
@@ -129,8 +130,8 @@ CanvasState.prototype.draw = function() {
 
   if (shapes.length > 0) {
     //I needed to created a nested for loop for hit detection purposes.
-    for (var j = 0; j < shapes.length; j++) {
-      for (var i = fallen.length - 1; i >= 0; i--) {
+    for (var i = 0; i<fallen.length; i++) {
+      for (var j = 0; j < shapes.length; j++) {
         //Each time the falling block approaches the floor, the function checks
         //to see if the intersection function is true at any point.
         if (shapes[j].intersects(fallen[i])) {
@@ -145,52 +146,62 @@ CanvasState.prototype.draw = function() {
           fallen.push(shapes[2]);
           fallen.push(shapes[3]);
           shapes.splice(0, 4);
-          clear(intervals);
-          tBlock.shape = [new Rectangle(positionX*0.4, tHeight, '#9013FE'), new Rectangle(positionX*0.3, tHeight*2, '#9013FE'),
-             new Rectangle(positionX*0.4, tHeight*2, '#9013FE'), new Rectangle(positionX*0.5, tHeight*2, '#9013FE')];
-          jBlock.shape = [new Rectangle(positionX*0.5, tHeight, '#4A6EE2'),
-             new Rectangle(positionX*0.3, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.5, tHeight*2, '#4A6EE2')];
-          sBlock.shape = [new Rectangle(positionX*0.4, tHeight, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.3, tHeight, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*2, '#7ED321')];
-          iBlock.shape = [new Rectangle(positionX*0.4, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.6, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.3, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight, '#50E3C2')];
-          oBlock.shape = [new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')];
-          zBlock.shape = [new Rectangle(positionX*0.4, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.3, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.5, tHeight, '#D0021B')];
-          lBlock.shape = [new Rectangle(positionX*0.3, tHeight, '#E59512'),
-             new Rectangle(positionX*0.3, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.5, tHeight*2, '#E59512')];
 
+
+          tBlock.shape = [new Rectangle(positionX * 0.4, tHeight, '#9013FE'),
+            new Rectangle(positionX * 0.3, tHeight * 2, '#9013FE'),
+            new Rectangle(positionX * 0.4, tHeight * 2, '#9013FE'), new Rectangle(positionX * 0.5, tHeight * 2, '#9013FE')
+          ];
+          jBlock.shape = [new Rectangle(positionX * 0.5, tHeight, '#4A6EE2'),
+            new Rectangle(positionX * 0.3, tHeight * 2, '#4A6EE2'),
+            new Rectangle(positionX * 0.4, tHeight * 2, '#4A6EE2'),
+            new Rectangle(positionX * 0.5, tHeight * 2, '#4A6EE2')
+          ];
+          sBlock.shape = [new Rectangle(positionX * 0.4, tHeight, '#7ED321'),
+            new Rectangle(positionX * 0.4, tHeight * 2, '#7ED321'),
+            new Rectangle(positionX * 0.3, tHeight, '#7ED321'),
+            new Rectangle(positionX * 0.5, tHeight * 2, '#7ED321')
+          ];
+          iBlock.shape = [new Rectangle(positionX * 0.4, tHeight, '#50E3C2'),
+            new Rectangle(positionX * 0.6, tHeight, '#50E3C2'),
+            new Rectangle(positionX * 0.3, tHeight, '#50E3C2'),
+            new Rectangle(positionX * 0.5, tHeight, '#50E3C2')
+          ];
+          oBlock.shape = [new Rectangle(positionX * 0.4, tHeight, '#F8E71C'),
+            new Rectangle(positionX * 0.5, tHeight, '#F8E71C'),
+            new Rectangle(positionX * 0.4, tHeight * 2, '#F8E71C'),
+            new Rectangle(positionX * 0.5, tHeight * 2, '#F8E71C')
+          ];
+          zBlock.shape = [new Rectangle(positionX * 0.4, tHeight, '#D0021B'),
+            new Rectangle(positionX * 0.3, tHeight * 2, '#D0021B'),
+            new Rectangle(positionX * 0.4, tHeight * 2, '#D0021B'),
+            new Rectangle(positionX * 0.5, tHeight, '#D0021B')
+          ];
+          lBlock.shape = [new Rectangle(positionX * 0.3, tHeight, '#E59512'),
+            new Rectangle(positionX * 0.3, tHeight * 2, '#E59512'),
+            new Rectangle(positionX * 0.4, tHeight * 2, '#E59512'),
+            new Rectangle(positionX * 0.5, tHeight * 2, '#E59512')
+          ];
+          return;
         } else {
           //If the shape does not intersect, this adjusts the y position 1/20
           //of the way down the board. This also gives the incremental falling
           //visuals common for tetris.
-          shapes[j].drop();
+
 
           this.keyControls(shapes);
           //finally, this function draws the rectangle.
-          shapes[j].draw(ctx);
+          shapes[j].draw(this.ctx);
+          shapes[j].drop();
         }
       }
     }
   }
 };
 
-function randomTetrino(){
+function randomTetrino() {
   var num = Math.floor(Math.random() * 7);
-  switch(true){
+  switch (true) {
     case num === 0:
       return tBlock.shape;
     case num === 1:
@@ -212,10 +223,13 @@ function randomTetrino(){
 //this is for the create rectangle button being used for testing
 
 CanvasState.prototype.newRect = function() {
-
   var tetrino = randomTetrino();
   for (var i = 0; i < tetrino.length; i++) {
     this.addShape(tetrino[i]);
   }
-
 };
+
+// setInterval(
+//   function(){
+//     canva.newRect();
+//   }, 5000);

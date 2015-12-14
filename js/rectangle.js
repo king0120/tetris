@@ -1,9 +1,7 @@
 
-//@codekit-prepend 'generator.js';
+
 
 //declared these useful globals since this is the very beginning of the app.
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
 
 //This sets the global size for an individual block.  the tWidth is set
 //slightly smaller to avoid collision detection bugs.
@@ -15,6 +13,8 @@ var Rectangle = function(x, y, color, w, h) {
   this.y = y;
   this.w = w;
   this.h = h;
+  this.ctx = document.getElementById('canvas').getContext('2d');
+
   this.hit = false;
 
   //the floor and walls of the game board need custom widths and height, so I
@@ -27,23 +27,21 @@ var Rectangle = function(x, y, color, w, h) {
 
   //this will be changed later when tetrinos have their own objects
   this.color = color;
+
+  //This is the canvas draw function.  It is used at the end of CanvasState.draw
+  this.draw = function() {
+    this.ctx.fillStyle = this.color;
+    this.ctx.lineWidth="3";
+    this.ctx.strokeStyle = 'black';
+    this.ctx.strokeRect(this.x, this.y, this.w, this.h);
+    this.ctx.fillRect(this.x, this.y, this.w, this.h);
+  };
+
+  this.drop = function(){
+    this.y += tHeight/15;
+  };
 };
 
-//This is the canvas draw function.  It is used at the end of CanvasState.draw
-Rectangle.prototype.draw = function() {
-  ctx.fillStyle = this.color;
-  ctx.fillRect(this.x, this.y, this.w, this.h);
-
-};
-
-//For use in the key controls
-
-
-
-
-Rectangle.prototype.drop = function(){
-  this.y += tHeight/5;
-};
 
 //This detects if either this or the declared function intersects on any
 //one side
