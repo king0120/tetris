@@ -15,7 +15,7 @@ function CanvasState(canvas1) {
   this.clear = function() {
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     for (var i = 0; i < this.fallen.length; i++) {
-      this.fallen[i].draw(ctx);
+      this.fallen[i].draw(ctx); //If I remove this line, the bricks become invisible. Challenge mode?
     }
   };
 
@@ -42,7 +42,6 @@ CanvasState.prototype.draw = function() {
   for (var j = 0; j < shapes.length; j++) {
     var movement = 3;
     for (var i = fallen.length - 1; i >= 0; i--) {
-      fallen[i].draw(ctx);
       if (shapes[j].intersects(fallen[i])) {
         shapes[j].y = fallen[i].y - fallen[i].h;
         fallen.push(shapes[j]);
@@ -52,6 +51,7 @@ CanvasState.prototype.draw = function() {
         this.hit = true;
       } else if (shapes[j].hit !== true) {
         shapes[j].y += movement;
+        window.console.log(movement);
 
         document.onkeydown = function(e) {
           e = e || window.event;
