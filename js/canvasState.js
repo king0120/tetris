@@ -151,7 +151,7 @@ function next() {
   tetrino = randomTetrino();
   var nextPic = document.getElementById('next');
   console.log(tetrino.name);
-  nextPic.innerHTML = "<img src='/images/" + tetrino.name + ".png' alt='" + tetrino.name + "'>";
+  nextPic.innerHTML = "<img src='images/" + tetrino.name + ".png' alt='" + tetrino.name + "'>";
 }
 
 function stats(tet) {
