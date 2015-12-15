@@ -1,4 +1,4 @@
-//@codekit-prepend 'rotate.js';
+//@codekit-prepend 'win.js';
 
 
 var canvas = document.getElementById('canvas');
@@ -82,7 +82,7 @@ var keyControls = function(toMove) {
         break;
       case 68: //the letter D
         window.console.log("Right");
-        moveRight(toMove);
+          moveRight(toMove);
         break;
       case 39: //right arrow key
         window.console.log(toMove);
@@ -143,13 +143,14 @@ var addShape = function(shape) {
   shapes.push(shape[0]);
 };
 var randomRotate;
-var tetrino;
+var tetrino=randomTetrino();
 
 //this is for the create rectangle button being used for testing
 function next() {
   randomRotate = Math.floor(Math.random() * 3);
   tetrino = randomTetrino();
   var nextPic = document.getElementById('next');
+  console.log(tetrino.name);
   nextPic.innerHTML = "<img src='/images/" + tetrino.name + ".png' alt='" + tetrino.name + "'>";
 }
 
@@ -164,13 +165,7 @@ function stats(tet) {
 function newRect() {
   var start = document.getElementById('start');
   start.style.display = 'none';
-  if (tetrino === undefined && randomRotate === undefined) {
-    randomRotate = Math.floor(Math.random() * 3);
-    tetrino = randomTetrino();
-  }
-
   for (var i = 0; i < tetrino.shape[0].length; i++) {
-
     addShape([tetrino.shape[0][i], tetrino.name]);
   }
   stats(tetrino);
@@ -204,7 +199,7 @@ var draw = function(canvas) {
           //THIS IS WHERE MY BUG WAS!!!! Now how do I reset the speed?
           //I think I need to set it near this.clear
 
-          shapes[j].y = fallen[i].y - fallen[i].h;
+          shapes[j].y = Math.floor(fallen[i].y) - Math.floor(fallen[i].h);
           //Once a shape intersects, this pushes it into the fallen array and
           //out of the shapes array.
 
@@ -218,6 +213,7 @@ var draw = function(canvas) {
           fallen.push(shapes[2]);
           fallen.push(shapes[3]);
           shapes.splice(0, 4);
+          checkWin();
           window.console.log(fallen[i].y);
           if (fallen[i].y < 60) {
             alert('Game Over');
