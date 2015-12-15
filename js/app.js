@@ -7,16 +7,16 @@
 //   window.console.log("X: " + locX + "  Y: " + locY);
 
 // });
-var canva;
+//var canva;
 
-function init(){
-  window.console.log("Started");
-  canva = new CanvasState(document.getElementById('canvas'));
+// function init(){
+//   window.console.log("Started");
+//   canva = new CanvasState(document.getElementById('canvas'));
 
-}
+// }
 
 
 
 
 //canvas.width * 0.2, canvas.height * 0.2, canvas.width / 10, canvas.height/24
-init();
+//init();

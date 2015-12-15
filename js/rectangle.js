@@ -9,6 +9,7 @@ var tWidth= (window.innerWidth-1) / 10;
 var tHeight= (window.innerHeight-1) / 20;
 
 var Rectangle = function(x, y, color, w, h) {
+  this.name = 0;
   this.x = x;
   this.y = y;
   this.w = w;
@@ -21,7 +22,7 @@ var Rectangle = function(x, y, color, w, h) {
   //made those perimeters available, but I created these default values to
   //make it easier to declare new rectangles
   if (w === undefined || h === undefined) {
-    this.w = tWidth;
+    this.w = tWidth-2;
     this.h = tHeight;
   }
 
@@ -29,16 +30,31 @@ var Rectangle = function(x, y, color, w, h) {
   this.color = color;
 
   //This is the canvas draw function.  It is used at the end of CanvasState.draw
-  this.draw = function() {
+  this.drawFallen = function() {
     this.ctx.fillStyle = this.color;
-    this.ctx.lineWidth="3";
+    this.ctx.lineWidth= "3";
     this.ctx.strokeStyle = 'black';
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
     this.ctx.fillRect(this.x, this.y, this.w, this.h);
   };
 
+  this.draw = function() {
+    var fall = this.y;
+    fall+= tHeight/18;
+    this.ctx.fillStyle = this.color;
+    this.ctx.lineWidth= "3";
+    this.ctx.strokeStyle = 'black';
+    this.ctx.strokeRect(this.x, fall, this.w, this.h);
+    this.ctx.fillRect(this.x, fall, this.w, this.h);
+  };
+
   this.drop = function(){
-    this.y += tHeight/15;
+    //var test=this;
+    var fall = this.y;
+    fall+= tHeight/18;
+    this.y = fall;
+    //window.console.log(test.y);
+   // test.y += tHeight/18;
   };
 };
 
