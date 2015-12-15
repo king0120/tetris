@@ -51,7 +51,7 @@ var Rectangle = function(x, y, color, w, h) {
   this.drop = function(){
     //var test=this;
     var fall = this.y;
-    fall+= tHeight/18;
+    fall+= tHeight/14;
     this.y = fall;
     //window.console.log(test.y);
    // test.y += tHeight/18;

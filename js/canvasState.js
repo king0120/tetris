@@ -16,8 +16,9 @@ var ctx = canvas.getContext('2d');
 var shapes = [];
 
 var fallen = [new Rectangle(0, canvas.height, 'black', canvas.width, tHeight),
-          new Rectangle(canvas.width, tHeight, 'black', 100, canvas.height),
-              new Rectangle(-10, tHeight, 'black', 10, canvas.height)];
+  new Rectangle(canvas.width, tHeight, 'black', 100, canvas.height),
+  new Rectangle(-10, tHeight, 'black', 10, canvas.height)
+];
 
 
 
@@ -39,12 +40,12 @@ function clear() {
 var moveLeft = function(b) {
 
   for (var i = 0; i < b.length; i++) {
-   // if (b[0].x>0 && b[1].x>0 && b[2].x>0 && b[3].x>0){
-       b[i].x -= tWidth;
-   //   }
-   // else {
-   //   console.log('TOO FAR!');
-   // }
+    // if (b[0].x>0 && b[1].x>0 && b[2].x>0 && b[3].x>0){
+    b[i].x -= tWidth;
+    //   }
+    // else {
+    //   console.log('TOO FAR!');
+    // }
   }
 };
 var moveRight = function(b) {
@@ -111,11 +112,11 @@ function randomTetrino() {
   var shape;
   switch (true) {
     case num === 0:
-      shape =tBlock;
+      shape = tBlock;
       return shape;
     case num === 1:
-     shape = jBlock;
-     return shape;
+      shape = jBlock;
+      return shape;
     case num === 2:
       shape = sBlock;
       return shape;
@@ -137,21 +138,42 @@ function randomTetrino() {
 //I can call on .addShape to create a new block.
 var addShape = function(shape) {
   shapes.push(shape[0]);
-  window.console.log(shape[1]);
 };
+var randomRotate;
+var tetrino;
 
 //this is for the create rectangle button being used for testing
+function next() {
+  randomRotate = Math.floor(Math.random() * 3);
+  tetrino = randomTetrino();
+  var nextPic = document.getElementById('next');
+  nextPic.innerHTML = "<img src='/images/" + tetrino.name + ".png' alt='" + tetrino.name + "'>";
+}
+
+function stats(tet) {
+  if (tet) {
+    tet.number++;
+    var stats = document.getElementById(tet.name);
+    stats.innerHTML = tet.number;
+  }
+}
 
 function newRect() {
-  var randomRotate = Math.floor(Math.random()*3);
-  var tetrino = randomTetrino();
+  var start = document.getElementById('start');
+  start.style.display = 'none';
+  if (tetrino === undefined && randomRotate === undefined) {
+    randomRotate = Math.floor(Math.random() * 3);
+    tetrino = randomTetrino();
+  }
   for (var i = 0; i < tetrino.shape.length; i++) {
 
     addShape([tetrino.shape[randomRotate][i], tetrino.name]);
   }
+  stats(tetrino);
+  next();
 }
 
-function devRect(shape){
+function devRect(shape) {
   for (var i = 0; i < shape.length; i++) {
     addShape(shape[i]);
   }
@@ -181,179 +203,228 @@ var draw = function(canvas) {
           //Once a shape intersects, this pushes it into the fallen array and
           //out of the shapes array.
           shapes[j].hit = true;
+
           fallen.push(shapes[0]);
           fallen.push(shapes[1]);
           fallen.push(shapes[2]);
           fallen.push(shapes[3]);
           shapes.splice(0, 4);
+          window.console.log(fallen[i].y);
+          if (fallen[i].y < 60) {
+            alert('Game Over');
+            console.log('DELETE');
+            fallen.length = 3;
+            return fallen.length;
+          }
 
 
-          tBlock.shape = [[new Rectangle(positionX*0.4, tHeight, "#9013FE"),  //upside down T
-             new Rectangle(positionX*0.3, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.5, tHeight*2, "#9013FE")],
+          tBlock.shape = [
+            [new Rectangle(positionX * 0.4, tHeight, "#9013FE"), //upside down T
+              new Rectangle(positionX * 0.3, tHeight * 2, "#9013FE"),
+              new Rectangle(positionX * 0.4, tHeight * 2, "#9013FE"),
+              new Rectangle(positionX * 0.5, tHeight * 2, "#9013FE")
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, "#9013FE"), // left T
-             new Rectangle(positionX*0.4, tHeight*3, "#9013FE"),
-             new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.5, tHeight*2, "#9013FE")],
+            [new Rectangle(positionX * 0.4, tHeight, "#9013FE"), // left T
+              new Rectangle(positionX * 0.4, tHeight * 3, "#9013FE"),
+              new Rectangle(positionX * 0.4, tHeight * 2, "#9013FE"),
+              new Rectangle(positionX * 0.5, tHeight * 2, "#9013FE")
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight*3, "#9013FE"), // right side up T
-             new Rectangle(positionX*0.3, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.5, tHeight*2, "#9013FE")],
+            [new Rectangle(positionX * 0.4, tHeight * 3, "#9013FE"), // right side up T
+              new Rectangle(positionX * 0.3, tHeight * 2, "#9013FE"),
+              new Rectangle(positionX * 0.4, tHeight * 2, "#9013FE"),
+              new Rectangle(positionX * 0.5, tHeight * 2, "#9013FE")
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, "#9013FE"), // right T
-             new Rectangle(positionX*0.3, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.4, tHeight*3, "#9013FE")]];
+            [new Rectangle(positionX * 0.4, tHeight, "#9013FE"), // right T
+              new Rectangle(positionX * 0.3, tHeight * 2, "#9013FE"),
+              new Rectangle(positionX * 0.4, tHeight * 2, "#9013FE"),
+              new Rectangle(positionX * 0.4, tHeight * 3, "#9013FE")
+            ]
+          ];
 
-          jBlock.shape = [[new Rectangle(positionX*0.3, tHeight, '#4A6EE2'),
-             new Rectangle(positionX*0.3, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.5, tHeight*2, '#4A6EE2')],
+          jBlock.shape = [
+            [new Rectangle(positionX * 0.3, tHeight, '#4A6EE2'),
+              new Rectangle(positionX * 0.3, tHeight * 2, '#4A6EE2'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#4A6EE2'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#4A6EE2')
+            ],
 
-             [new Rectangle(positionX*0.5, tHeight, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*1, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*3, '#4A6EE2')],
+            [new Rectangle(positionX * 0.5, tHeight, '#4A6EE2'),
+              new Rectangle(positionX * 0.4, tHeight * 1, '#4A6EE2'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#4A6EE2'),
+              new Rectangle(positionX * 0.4, tHeight * 3, '#4A6EE2')
+            ],
 
-             [new Rectangle(positionX*0.5, tHeight*3, '#4A6EE2'),
-             new Rectangle(positionX*0.3, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.5, tHeight*2, '#4A6EE2')],
+            [new Rectangle(positionX * 0.5, tHeight * 3, '#4A6EE2'),
+              new Rectangle(positionX * 0.3, tHeight * 2, '#4A6EE2'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#4A6EE2'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#4A6EE2')
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*3, '#4A6EE2'),
-             new Rectangle(positionX*0.3, tHeight*3, '#4A6EE2')]];
+            [new Rectangle(positionX * 0.4, tHeight, '#4A6EE2'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#4A6EE2'),
+              new Rectangle(positionX * 0.4, tHeight * 3, '#4A6EE2'),
+              new Rectangle(positionX * 0.3, tHeight * 3, '#4A6EE2')
+            ]
+          ];
 
-          sBlock.shape = [[new Rectangle(positionX*0.3, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*1, '#7ED321')],
+          sBlock.shape = [
+            [new Rectangle(positionX * 0.3, tHeight * 2, '#7ED321'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#7ED321'),
+              new Rectangle(positionX * 0.4, tHeight, '#7ED321'),
+              new Rectangle(positionX * 0.5, tHeight * 1, '#7ED321')
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*3, '#7ED321')],
+            [new Rectangle(positionX * 0.4, tHeight, '#7ED321'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#7ED321'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#7ED321'),
+              new Rectangle(positionX * 0.5, tHeight * 3, '#7ED321')
+            ],
 
-             [new Rectangle(positionX*0.3, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*1, '#7ED321')],
+            [new Rectangle(positionX * 0.3, tHeight * 2, '#7ED321'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#7ED321'),
+              new Rectangle(positionX * 0.4, tHeight, '#7ED321'),
+              new Rectangle(positionX * 0.5, tHeight * 1, '#7ED321')
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*3, '#7ED321')]];
+            [new Rectangle(positionX * 0.4, tHeight, '#7ED321'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#7ED321'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#7ED321'),
+              new Rectangle(positionX * 0.5, tHeight * 3, '#7ED321')
+            ]
+          ];
 
-          iBlock.shape =
-             [[new Rectangle(positionX*0.4, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.6, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.3, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight, '#50E3C2')],
+          iBlock.shape = [
+            [new Rectangle(positionX * 0.4, tHeight, '#50E3C2'),
+              new Rectangle(positionX * 0.6, tHeight, '#50E3C2'),
+              new Rectangle(positionX * 0.3, tHeight, '#50E3C2'),
+              new Rectangle(positionX * 0.5, tHeight, '#50E3C2')
+            ],
 
-             [new Rectangle(positionX*0.5, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*0, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*2, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*3, '#50E3C2')],
+            [new Rectangle(positionX * 0.5, tHeight, '#50E3C2'),
+              new Rectangle(positionX * 0.5, tHeight * 0, '#50E3C2'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#50E3C2'),
+              new Rectangle(positionX * 0.5, tHeight * 3, '#50E3C2')
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.6, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.3, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight, '#50E3C2')],
+            [new Rectangle(positionX * 0.4, tHeight, '#50E3C2'),
+              new Rectangle(positionX * 0.6, tHeight, '#50E3C2'),
+              new Rectangle(positionX * 0.3, tHeight, '#50E3C2'),
+              new Rectangle(positionX * 0.5, tHeight, '#50E3C2')
+            ],
 
-             [new Rectangle(positionX*0.5, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*0, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*2, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*3, '#50E3C2')]];
+            [new Rectangle(positionX * 0.5, tHeight, '#50E3C2'),
+              new Rectangle(positionX * 0.5, tHeight * 0, '#50E3C2'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#50E3C2'),
+              new Rectangle(positionX * 0.5, tHeight * 3, '#50E3C2')
+            ]
+          ];
 
-          oBlock.shape = [[new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')],
+          oBlock.shape = [
+            [new Rectangle(positionX * 0.4, tHeight, '#F8E71C'),
+              new Rectangle(positionX * 0.5, tHeight, '#F8E71C'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#F8E71C'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#F8E71C')
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')],
+            [new Rectangle(positionX * 0.4, tHeight, '#F8E71C'),
+              new Rectangle(positionX * 0.5, tHeight, '#F8E71C'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#F8E71C'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#F8E71C')
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')],
+            [new Rectangle(positionX * 0.4, tHeight, '#F8E71C'),
+              new Rectangle(positionX * 0.5, tHeight, '#F8E71C'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#F8E71C'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#F8E71C')
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')]];
+            [new Rectangle(positionX * 0.4, tHeight, '#F8E71C'),
+              new Rectangle(positionX * 0.5, tHeight, '#F8E71C'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#F8E71C'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#F8E71C')
+            ]
+          ];
 
-          zBlock.shape = [[new Rectangle(positionX*0.3, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.5, tHeight*2, '#D0021B')],
+          zBlock.shape = [
+            [new Rectangle(positionX * 0.3, tHeight, '#D0021B'),
+              new Rectangle(positionX * 0.4, tHeight, '#D0021B'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#D0021B'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#D0021B')
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.3, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.3, tHeight*3, '#D0021B')],
+            [new Rectangle(positionX * 0.4, tHeight, '#D0021B'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#D0021B'),
+              new Rectangle(positionX * 0.3, tHeight * 2, '#D0021B'),
+              new Rectangle(positionX * 0.3, tHeight * 3, '#D0021B')
+            ],
 
-             [new Rectangle(positionX*0.3, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.5, tHeight*2, '#D0021B')],
+            [new Rectangle(positionX * 0.3, tHeight, '#D0021B'),
+              new Rectangle(positionX * 0.4, tHeight, '#D0021B'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#D0021B'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#D0021B')
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.3, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.3, tHeight*3, '#D0021B')]];
+            [new Rectangle(positionX * 0.4, tHeight, '#D0021B'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#D0021B'),
+              new Rectangle(positionX * 0.3, tHeight * 2, '#D0021B'),
+              new Rectangle(positionX * 0.3, tHeight * 3, '#D0021B')
+            ]
+          ];
 
-          lBlock.shape = [[new Rectangle(positionX*0.5, tHeight, '#E59512'),
-             new Rectangle(positionX*0.3, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.5, tHeight*2, '#E59512')],
+          lBlock.shape = [
+            [new Rectangle(positionX * 0.5, tHeight, '#E59512'),
+              new Rectangle(positionX * 0.3, tHeight * 2, '#E59512'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#E59512'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#E59512')
+            ],
 
-             [new Rectangle(positionX*0.5, tHeight*3, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*3, '#E59512')],
+            [new Rectangle(positionX * 0.5, tHeight * 3, '#E59512'),
+              new Rectangle(positionX * 0.4, tHeight, '#E59512'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#E59512'),
+              new Rectangle(positionX * 0.4, tHeight * 3, '#E59512')
+            ],
 
-             [new Rectangle(positionX*0.3, tHeight*3, '#E59512'),
-             new Rectangle(positionX*0.3, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.5, tHeight*2, '#E59512')],
+            [new Rectangle(positionX * 0.3, tHeight * 3, '#E59512'),
+              new Rectangle(positionX * 0.3, tHeight * 2, '#E59512'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#E59512'),
+              new Rectangle(positionX * 0.5, tHeight * 2, '#E59512')
+            ],
 
-             [new Rectangle(positionX*0.4, tHeight, '#E59512'),
-             new Rectangle(positionX*0.3, tHeight, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*3, '#E59512')]];
+            [new Rectangle(positionX * 0.4, tHeight, '#E59512'),
+              new Rectangle(positionX * 0.3, tHeight, '#E59512'),
+              new Rectangle(positionX * 0.4, tHeight * 2, '#E59512'),
+              new Rectangle(positionX * 0.4, tHeight * 3, '#E59512')
+            ]
+          ];
 
           newRect();
           return;
         }
       } //end for i loop
       if (!this.hit) {
-          //If the shape does not intersect, this adjusts the y position 1/20
-          //of the way down the board. This also gives the incremental falling
-          //visuals common for tetris.
+        //If the shape does not intersect, this adjusts the y position 1/20
+        //of the way down the board. This also gives the incremental falling
+        //visuals common for tetris.
 
 
-          keyControls(shapes);
-          //finally, this function draws the rectangle.
-          shapes[j].draw();
-          shapes[j].drop();
-        }
+        keyControls(shapes);
+        //finally, this function draws the rectangle.
+        shapes[j].draw();
+        shapes[j].drop();
+      }
     } //end for j loop
   } //end if statement
 
-};//end Draw
+}; //end Draw
 
 //Set interval causes the app to run through every x milliseconds depending on this.interval.
 //Not 100% sure why I needed to make this a variable to get this to work?
 
 var myState = canvas;
-myState.interval = 33/2;
+myState.interval = 33 / 2;
 
 function drawing() {
   draw(canvas);

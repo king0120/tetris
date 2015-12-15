@@ -1,6 +1,6 @@
 body {
   background-color: #000;
-  background-image: url("http://www.transparenttextures.com/patterns/brick-wall.png");
+  background-image: url("/images/brick-wall.png");
   font-family: "Rationale"; }
 
 * {
@@ -13,12 +13,6 @@ body {
   flex-direction: row;
   flex-wrap: no-wrap;
   justify-content: center; }
-
-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 50px; }
 
 canvas {
   background: rgba(255, 255, 255, 0.3);
@@ -38,9 +32,13 @@ canvas {
   transform: translateY(5%);
   background: rgba(255, 255, 255, 0.3); }
 
-.left .emptyBox {
-  height: 0%;
-  width: 100%; }
+.left button {
+  width: 100%;
+  margin: 40px 0 0 0;
+  height: 100px;
+  font-size: 4rem;
+  color: #0064fe;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 3px 3px 0px #57ff96, 5px 5px 0px rgba(255, 87, 150, 0.8), 5px 7px 0px rgba(255, 87, 150, 0.5); }
 .left .stats {
   margin: 0 auto;
   max-height: 90%;
@@ -50,7 +48,7 @@ canvas {
   position: relative;
   top: 50%;
   transform: translateY(5%);
-  transform: translateY(-50%); }
+  transform: translateY(-60%); }
   .left .stats h2 {
     font-size: 2.6rem;
     margin-bottom: -5%;
@@ -74,6 +72,8 @@ canvas {
       font-size: 2.6rem;
       margin: 7% 4%;
       text-align: right; }
+      .left .stats li h4::first-letter {
+        color: transparent; }
     .left .stats li img {
       width: 100%;
       margin: 0; }
@@ -110,13 +110,13 @@ canvas {
     font-size: 2.6rem;
     text-align: center; }
   .right .next img {
-    width: 50%;
-    margin: 12.5% 25%; }
+    width: 100px;
+    margin: 10.5% 25%; }
 .right .title {
   text-align: center;
   margin: 0;
   width: 100%;
-  font-size: 5rem;
+  font-size: 400%;
   margin: 10% 0;
   font-family: "Audiowide";
   color: #0064fe;

@@ -7,35 +7,36 @@ html
   body
     .container
       .left
+        button(onclick='newRect()' id='start') START
         .stats
           h2 STATISTICS
           ul
             li
               img(src='images/tBlock.png')
-              h4 000
+              h4#tBlock 1000
             li
               img(src='images/jBlock.png')
-              h4 000
+              h4#jBlock 1000
             li
               img(src='images/sBlock.png')
-              h4 000
+              h4#sBlock 1000
             li
               img(src='images/iBlock.png')
-              h4 000
+              h4#iBlock 1000
             li
               img(src='images/oBlock.png')
-              h4 000
+              h4#oBlock 1000
             li
               img(src='images/zBlock.png')
-              h4 000
+              h4#zBlock 1000
             li
               img(src='images/lBlock.png')
-              h4 000
+              h4#lBlock 1000
       canvas(id='canvas')  This text is displayed if your browser does not support HTML5 Canvas.
       .right
         .next
           h2 NEXT
-          img(src='images/iBlock.png')
+          #next
         h1.title TETRIS
         .score
           h2 SCORE
@@ -49,7 +50,6 @@ html
         .level
           h2 LEVEL
           h3 04
-      button(onclick='newRect()') create rectangle
     script(src='js/generator.js')
     //- script(src='http://code.jquery.com/jquery-1.11.3.min.js')
     script(src='js/rectangle.js')

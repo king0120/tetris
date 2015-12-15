@@ -9,29 +9,30 @@
   <body>
     <div class="container">
       <div class="left">
+        <button onclick="newRect()" id="start">START</button>
         <div class="stats">
           <h2>STATISTICS</h2>
           <ul>
             <li><img src="images/tBlock.png"/>
-              <h4>000</h4>
+              <h4 id="tBlock">1000</h4>
             </li>
             <li><img src="images/jBlock.png"/>
-              <h4>000</h4>
+              <h4 id="jBlock">1000</h4>
             </li>
             <li><img src="images/sBlock.png"/>
-              <h4>000</h4>
+              <h4 id="sBlock">1000</h4>
             </li>
             <li><img src="images/iBlock.png"/>
-              <h4>000</h4>
+              <h4 id="iBlock">1000</h4>
             </li>
             <li><img src="images/oBlock.png"/>
-              <h4>000</h4>
+              <h4 id="oBlock">1000</h4>
             </li>
             <li><img src="images/zBlock.png"/>
-              <h4>000</h4>
+              <h4 id="zBlock">1000</h4>
             </li>
             <li><img src="images/lBlock.png"/>
-              <h4>000</h4>
+              <h4 id="lBlock">1000</h4>
             </li>
           </ul>
         </div>
@@ -39,7 +40,8 @@
       <canvas id="canvas"> This text is displayed if your browser does not support HTML5 Canvas.</canvas>
       <div class="right">
         <div class="next">
-          <h2>NEXT</h2><img src="images/iBlock.png"/>
+          <h2>NEXT</h2>
+          <div id="next"></div>
         </div>
         <h1 class="title">TETRIS</h1>
         <div class="score">
@@ -58,7 +60,6 @@
           <h3>04</h3>
         </div>
       </div>
-      <button onclick="newRect()">create rectangle</button>
     </div>
     <script src="js/generator.js"></script>
     <script src="js/rectangle.js"></script>
