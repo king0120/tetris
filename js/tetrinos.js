@@ -13,20 +13,21 @@ var tBlock = {
              new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
              new Rectangle(positionX*0.5, tHeight*2, "#9013FE")],
 
-             [new Rectangle(positionX*0.4, tHeight, "#9013FE"), // left T
-             new Rectangle(positionX*0.4, tHeight*3, "#9013FE"),
-             new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.5, tHeight*2, "#9013FE")],
+             // [new Rectangle(positionX*0.5, tHeight*2, "#9013FE"), // left T
+             // new Rectangle(positionX*0.4, tHeight, "#9013FE"),
+             // new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
+             // new Rectangle(positionX*0.4, tHeight*3, "#9013FE")],
 
-             [new Rectangle(positionX*0.4, tHeight*3, "#9013FE"), // right side up T
-             new Rectangle(positionX*0.3, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.5, tHeight*2, "#9013FE")],
+             // [new Rectangle(positionX*0.4, tHeight*3, "#9013FE"), // right side up T
+             // new Rectangle(positionX*0.5, tHeight*2, "#9013FE"),
+             // new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
+             // new Rectangle(positionX*0.3, tHeight*2, "#9013FE")],
 
-             [new Rectangle(positionX*0.4, tHeight, "#9013FE"), // right T
-             new Rectangle(positionX*0.3, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
-             new Rectangle(positionX*0.4, tHeight*3, "#9013FE")]],
+             // [new Rectangle(positionX*0.3, tHeight*2, "#9013FE"), // right T
+             // new Rectangle(positionX*0.4, tHeight*3, "#9013FE"),
+             // new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
+             // new Rectangle(positionX*0.4, tHeight, "#9013FE")]
+             ],
 };
 
 //1
@@ -39,20 +40,21 @@ var jBlock = {
              new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
              new Rectangle(positionX*0.5, tHeight*2, '#4A6EE2')],
 
-             [new Rectangle(positionX*0.5, tHeight, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*1, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*3, '#4A6EE2')],
+             // [new Rectangle(positionX*0.5, tHeight, '#4A6EE2'),
+             // new Rectangle(positionX*0.4, tHeight*1, '#4A6EE2'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
+             // new Rectangle(positionX*0.4, tHeight*3, '#4A6EE2')],
 
-             [new Rectangle(positionX*0.5, tHeight*3, '#4A6EE2'),
-             new Rectangle(positionX*0.3, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.5, tHeight*2, '#4A6EE2')],
+             // [new Rectangle(positionX*0.5, tHeight*3, '#4A6EE2'),
+             // new Rectangle(positionX*0.3, tHeight*2, '#4A6EE2'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
+             // new Rectangle(positionX*0.5, tHeight*2, '#4A6EE2')],
 
-             [new Rectangle(positionX*0.4, tHeight, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
-             new Rectangle(positionX*0.4, tHeight*3, '#4A6EE2'),
-             new Rectangle(positionX*0.3, tHeight*3, '#4A6EE2')]]
+             // [new Rectangle(positionX*0.4, tHeight, '#4A6EE2'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#4A6EE2'),
+             // new Rectangle(positionX*0.4, tHeight*3, '#4A6EE2'),
+             // new Rectangle(positionX*0.3, tHeight*3, '#4A6EE2')]
+             ]
 
 };
 
@@ -66,20 +68,21 @@ var sBlock = {
              new Rectangle(positionX*0.4, tHeight, '#7ED321'),
              new Rectangle(positionX*0.5, tHeight*1, '#7ED321')],
 
-             [new Rectangle(positionX*0.4, tHeight, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*3, '#7ED321')],
+             // [new Rectangle(positionX*0.4, tHeight, '#7ED321'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
+             // new Rectangle(positionX*0.5, tHeight*2, '#7ED321'),
+             // new Rectangle(positionX*0.5, tHeight*3, '#7ED321')],
 
-             [new Rectangle(positionX*0.3, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*1, '#7ED321')],
+             // [new Rectangle(positionX*0.3, tHeight*2, '#7ED321'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
+             // new Rectangle(positionX*0.4, tHeight, '#7ED321'),
+             // new Rectangle(positionX*0.5, tHeight*1, '#7ED321')],
 
-             [new Rectangle(positionX*0.4, tHeight, '#7ED321'),
-             new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*2, '#7ED321'),
-             new Rectangle(positionX*0.5, tHeight*3, '#7ED321')]]
+             // [new Rectangle(positionX*0.4, tHeight, '#7ED321'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#7ED321'),
+             // new Rectangle(positionX*0.5, tHeight*2, '#7ED321'),
+             // new Rectangle(positionX*0.5, tHeight*3, '#7ED321')]
+             ]
 };
 
 //3
@@ -87,25 +90,27 @@ var iBlock = {
   'name' : 'iBlock',
   'color' : '#50E3C2',
   'number' : 1000,
-  "shape" : [[new Rectangle(positionX*0.4, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.6, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.3, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight, '#50E3C2')],
+  "shape" : [[new Rectangle(positionX*0.3, tHeight, '#50E3C2'),
+             new Rectangle(positionX*0.4, tHeight, '#50E3C2'),
+             new Rectangle(positionX*0.5, tHeight, '#50E3C2'),
+             new Rectangle(positionX*0.6, tHeight, '#50E3C2')]
+             // ],
 
-             [new Rectangle(positionX*0.5, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*0, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*2, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*3, '#50E3C2')],
+             // [new Rectangle(positionX*0.5, tHeight*0, '#50E3C2'),
+             // new Rectangle(positionX*0.5, tHeight*1, '#50E3C2'),
+             // new Rectangle(positionX*0.5, tHeight*2, '#50E3C2'),
+             // new Rectangle(positionX*0.5, tHeight*3, '#50E3C2')],
 
-             [new Rectangle(positionX*0.4, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.6, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.3, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight, '#50E3C2')],
+             // [new Rectangle(positionX*0.3, tHeight, '#50E3C2'),
+             // new Rectangle(positionX*0.4, tHeight, '#50E3C2'),
+             // new Rectangle(positionX*0.5, tHeight, '#50E3C2'),
+             // new Rectangle(positionX*0.6, tHeight, '#50E3C2')],
 
-             [new Rectangle(positionX*0.5, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*0, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*2, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight*3, '#50E3C2')]]
+             // [new Rectangle(positionX*0.5, tHeight*0, '#50E3C2'),
+             // new Rectangle(positionX*0.5, tHeight*1, '#50E3C2'),
+             // new Rectangle(positionX*0.5, tHeight*2, '#50E3C2'),
+             // new Rectangle(positionX*0.5, tHeight*3, '#50E3C2')]
+             ]
 };
 
 //4
@@ -118,20 +123,21 @@ var oBlock = {
              new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
              new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')],
 
-             [new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')],
+             // [new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
+             // new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
+             // new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')],
 
-             [new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')],
+             // [new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
+             // new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
+             // new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')],
 
-             [new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
-             new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
-             new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')]]
+             // [new Rectangle(positionX*0.4, tHeight, '#F8E71C'),
+             // new Rectangle(positionX*0.5, tHeight, '#F8E71C'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#F8E71C'),
+             // new Rectangle(positionX*0.5, tHeight*2, '#F8E71C')]
+             ]
 };
 
 //5
@@ -144,20 +150,21 @@ var zBlock = {
              new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
              new Rectangle(positionX*0.5, tHeight*2, '#D0021B')],
 
-             [new Rectangle(positionX*0.4, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.3, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.3, tHeight*3, '#D0021B')],
+             // [new Rectangle(positionX*0.4, tHeight, '#D0021B'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
+             // new Rectangle(positionX*0.3, tHeight*2, '#D0021B'),
+             // new Rectangle(positionX*0.3, tHeight*3, '#D0021B')],
 
-             [new Rectangle(positionX*0.3, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.5, tHeight*2, '#D0021B')],
+             // [new Rectangle(positionX*0.3, tHeight, '#D0021B'),
+             // new Rectangle(positionX*0.4, tHeight, '#D0021B'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
+             // new Rectangle(positionX*0.5, tHeight*2, '#D0021B')],
 
-             [new Rectangle(positionX*0.4, tHeight, '#D0021B'),
-             new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.3, tHeight*2, '#D0021B'),
-             new Rectangle(positionX*0.3, tHeight*3, '#D0021B')]]
+             // [new Rectangle(positionX*0.4, tHeight, '#D0021B'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#D0021B'),
+             // new Rectangle(positionX*0.3, tHeight*2, '#D0021B'),
+             // new Rectangle(positionX*0.3, tHeight*3, '#D0021B')]
+             ]
 };
 
 //6
@@ -170,20 +177,22 @@ var lBlock = {
              new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
              new Rectangle(positionX*0.5, tHeight*2, '#E59512')],
 
-             [new Rectangle(positionX*0.5, tHeight*3, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*3, '#E59512')],
+             // [new Rectangle(positionX*0.5, tHeight*3, '#E59512'),
+             // new Rectangle(positionX*0.4, tHeight, '#E59512'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
+             // new Rectangle(positionX*0.4, tHeight*3, '#E59512')],
 
-             [new Rectangle(positionX*0.3, tHeight*3, '#E59512'),
-             new Rectangle(positionX*0.3, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.5, tHeight*2, '#E59512')],
+             // [new Rectangle(positionX*0.3, tHeight*3, '#E59512'),
+             // new Rectangle(positionX*0.3, tHeight*2, '#E59512'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
+             // new Rectangle(positionX*0.5, tHeight*2, '#E59512')],
 
-             [new Rectangle(positionX*0.4, tHeight, '#E59512'),
-             new Rectangle(positionX*0.3, tHeight, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
-             new Rectangle(positionX*0.4, tHeight*3, '#E59512')]]
+             // [new Rectangle(positionX*0.4, tHeight, '#E59512'),
+             // new Rectangle(positionX*0.3, tHeight, '#E59512'),
+             // new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
+             // new Rectangle(positionX*0.4, tHeight*3, '#E59512')]
+             ]
+
 };
 
 
