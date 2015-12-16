@@ -20,7 +20,7 @@
 
 ##Building
 ###Software
-<img src="images/jade-logo.svg" width='300px' alt="">
+<img src="images/jade.png" width='300px' alt="">
 <img src="images/sass-logo.png" width='200px' alt="">
 <img src="images/html5.png" width='200px' alt="">
 <img src="images/codekit.png" width='300px' alt="">

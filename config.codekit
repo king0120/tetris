@@ -55,6 +55,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/jade.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 26507,
+		"inputAbbreviatedPath": "\/images\/jade.png",
+		"outputAbbreviatedPath": "\/images\/jade.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/jBlock.png": {
 		"fileType": 32768,
 		"ignore": 0,
