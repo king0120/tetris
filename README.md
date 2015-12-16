@@ -1,7 +1,7 @@
 #Tetris!
 ##ATL WDI Project #1
 
-<img src="images/mockup.png" width='700px' alt="">
+<img src="images/tetris-screenshot.png" width='700px' alt="">
 
 
 ##Planning
