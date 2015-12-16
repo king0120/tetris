@@ -14,7 +14,9 @@ function rotate(tetrino) {
   switch (tetrino[0].color) {
     case "#9013FE": //tBlock
       switch (true) {
-        case (Math.ceil(tetrino[0].x - tetrino[2].x) === 1 || Math.ceil(tetrino[0].x - tetrino[2].x) === 0) && Math.ceil(tetrino[0].y - tetrino[2].y) === Math.ceil(tHeight): //tBlock.shape[2]  THIS IS SO HACKY. Come back to fix this
+        case (Math.ceil(tetrino[0].x - tetrino[2].x) === 1 ||
+              Math.ceil(tetrino[0].x - tetrino[2].x) === 0) &&
+              Math.ceil(tetrino[0].y - tetrino[2].y) === Math.ceil(tHeight):
           tetrino[0].x += left;
           tetrino[0].y += up;
           tetrino[1].x += left;
@@ -22,7 +24,8 @@ function rotate(tetrino) {
           tetrino[3].x += right;
           tetrino[3].y += up;
           break;
-         case Math.ceil(tetrino[0].x - tetrino[2].x) === Math.ceil(positionX/10*-1) && (Math.ceil(tetrino[0].y - tetrino[2].y) === 1 || Math.ceil(tetrino[0].y - tetrino[2].y) === 0): //tBlock.shape[3]
+         case Math.ceil(tetrino[0].x - tetrino[2].x) === Math.ceil(positionX/10*-1) &&
+         (Math.ceil(tetrino[0].y - tetrino[2].y) === 1 || Math.ceil(tetrino[0].y - tetrino[2].y) === 0):
           tetrino[0].x += right;
           tetrino[0].y += up;
           tetrino[1].x += left;
@@ -30,7 +33,9 @@ function rotate(tetrino) {
           tetrino[3].x += right;
           tetrino[3].y += down;
           break;
-        case (Math.ceil(tetrino[0].x - tetrino[2].x) === 1 || Math.ceil(tetrino[0].x - tetrino[2].x) === 0) && Math.ceil(tetrino[0].y - tetrino[2].y) === Math.ceil(-1* tHeight): //tBlock.shape[0]
+        case (Math.ceil(tetrino[0].x - tetrino[2].x) === 1 ||
+              Math.ceil(tetrino[0].x - tetrino[2].x) === 0) &&
+              Math.ceil(tetrino[0].y - tetrino[2].y) === Math.ceil(-1* tHeight):
           tetrino[0].x += right;
           tetrino[0].y += down;
           tetrino[1].x += right;

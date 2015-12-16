@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h1 id="tetris">Tetris!</h1>
+
+<h2 id="atlwdiproject1">ATL WDI Project #1</h2>
+
+<p><img src="images/mockup.png" width='700px' alt=""></p>
+
+<h2 id="planning">Planning</h2>
+
+<h3 id="wireframes:">Wireframes:</h3>
+
+<p><img src="images/mockup.png" width='500px' alt=""></p>
+
+<h3 id="notesandmockups">Notes and Mockups</h3>
+
+<p><img src="images/notecards.jpg" width='300px' style="float:left" alt="">
+<img src="images/planning1.jpg" width='300px' style="float:left" alt="">
+<img src="images/planning2.jpg" width='300px' style="float:left" alt=""><br>
+<a href="https://trello.com/b/g5dBuQrF/tetris-wdi-project-1">Trello</a><br><br>
+<a href="https://en.wikipedia.org/wiki/Tetris">Tetris Wikipedia Article</a></p>
+
+<h2 id="building">Building</h2>
+
+<h3 id="software">Software</h3>
+
+<p><img src="images/jade-logo.svg" width='300px' style="margin:15px" alt="">
+<img src="images/sass-logo.png" width='200px' style="margin:5px" alt="">
+<img src="images/html5.png" width='200px' style="margin:5px" alt="">
+<img src="images/codekit.png" width='300px' style="margin:5px" alt=""></p>
+
+<h3 id="issues">Issues</h3>
+
+<h5 id="nestedforloops">Nested for loops</h5>
+
+<pre><code class="javascript">    for (var j = 0; j &lt; shapes.length; j++) {
+      for (var i = 0; i &lt; fallen.length; i++)
+</code></pre>
+
+<pre><code>  vs.
+</code></pre>
+
+<pre><code class="javascript">    for (var i = 0; i &lt; fallen.length; i++) {
+      for (var j = 0; j &lt; shapes.length; j++) {
+</code></pre>
+
+<p>Result: Speed quadruples every time a new tetrino is made</p>
+
+<h5 id="animatinginhtml5canvas">Animating in HTML5 Canvas</h5>
+
+<pre><code class="javascript">  var myState = canvas;
+  myState.interval = 33 / 2;
+
+  function drawing() {
+    draw(canvas);
+  }
+
+  setInterval(drawing, myState.interval);
+</code></pre>
+
+<p>Every second, the canvas erases and redraws everything 60 times.
+ Required me to consider how movement and animation works. (Shoutout to the <a href="https://github.com/sims226/thunder-animation-basics">Animation Thunder Talk</a>)</p>
+
+<h5 id="typeandorientationoffallingtetrino">Type and orientation of falling tetrino</h5>
+
+<pre><code class="javascript">  switch (tetrino[0].color) {
+    case &quot;#9013FE&quot;: //tBlock
+      switch (true) {
+        case (Math.ceil(tetrino[0].x - tetrino[2].x) === 1 ||
+              Math.ceil(tetrino[0].x - tetrino[2].x) === 0) &amp;&amp;
+              Math.ceil(tetrino[0].y - tetrino[2].y) === Math.ceil(tHeight):
+          tetrino[0].x += left;
+          tetrino[0].y += up;
+          tetrino[1].x += left;
+          tetrino[1].y += down;
+          tetrino[3].x += right;
+          tetrino[3].y += up;
+          break;
+</code></pre>
+
+<p>Since each of the 4 blocks are written independant of one another, I used multiple switch statements to detect which tetrino was dropping, which rotation it was in, and provide instructions for it to turn clockwise.
+ In total, I had to determine the type and orientation of 18 different combinations of tetrino.</p>
+
+<h2 id="plannedupdates:">Planned Updates:</h2>
+
+<ol>
+<li>Horizontal collision detection with walls to keep block from going off screen</li>
+<li>Scoring according to official tetris rules</li>
+<li>Top Score Feature</li>
+<li>Add levels that increase the speed of the falling block</li>
+<li>Fix sizing of .png images and make more responsive</li>
+<li>Add touch controls for mobile</li>
+<li>Add a restart button and game over screen</li>
+</ol>
+
+<h1 id="enjoy">Enjoy!</h1>
+
+</body>
+</html>

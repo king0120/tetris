@@ -178,15 +178,12 @@ function checkLine(low, high) {
 }
 
 function checkWin() {
-  window.console.log("Fallen Length: " + fallen.length);
   for (var i = 0; i < 20; i++) {
     var checked = checkLine(tHeight * i, tHeight * (i + 1));
     if (checked >= 10) {
-      window.console.log(deleteArray);
       var toSplice = i;
-      window.console.log("toSplice: " + toSplice);
       for (var d = fallen.indexOf(deleteArray[9]); d < fallen.length; d++){
-        fallen[d].y += tHeight;
+        fallen[d].y += Math.ceil(tHeight);
       }
       for (var w = 0; w < deleteArray.length; w++) {
           fallen.splice(fallen.indexOf(deleteArray[w]), 1);

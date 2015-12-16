@@ -22,6 +22,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/codekit.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 14541,
+		"inputAbbreviatedPath": "\/images\/codekit.png",
+		"outputAbbreviatedPath": "\/images\/codekit.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/html5.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 28586,
+		"inputAbbreviatedPath": "\/images\/html5.png",
+		"outputAbbreviatedPath": "\/images\/html5.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/iBlock.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -55,6 +77,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/mockup.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 241560,
+		"inputAbbreviatedPath": "\/images\/mockup.png",
+		"outputAbbreviatedPath": "\/images\/mockup.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/notecards.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.38794e+06,
+		"inputAbbreviatedPath": "\/images\/notecards.jpg",
+		"outputAbbreviatedPath": "\/images\/notecards.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/oBlock.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -66,13 +110,35 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/Rectangle 268.png": {
+	"\/images\/planning1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.378e+06,
+		"inputAbbreviatedPath": "\/images\/planning1.jpg",
+		"outputAbbreviatedPath": "\/images\/planning1.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/planning2.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.22885e+06,
+		"inputAbbreviatedPath": "\/images\/planning2.jpg",
+		"outputAbbreviatedPath": "\/images\/planning2.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/sass-logo.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 207,
-		"inputAbbreviatedPath": "\/images\/Rectangle 268.png",
-		"outputAbbreviatedPath": "\/images\/Rectangle 268.png",
+		"initialSize": 86597,
+		"inputAbbreviatedPath": "\/images\/sass-logo.png",
+		"outputAbbreviatedPath": "\/images\/sass-logo.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -95,6 +161,17 @@
 		"initialSize": 784,
 		"inputAbbreviatedPath": "\/images\/tBlock.png",
 		"outputAbbreviatedPath": "\/images\/tBlock.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/tetris-screenshot.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 450003,
+		"inputAbbreviatedPath": "\/images\/tetris-screenshot.png",
+		"outputAbbreviatedPath": "\/images\/tetris-screenshot.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -250,6 +327,15 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
+		},
+	"\/README.html": {
+		"fileType": 8192,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/README.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/README.md": {
 		"criticStyle": 0,
