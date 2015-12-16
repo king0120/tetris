@@ -66,8 +66,6 @@ Rectangle.prototype.contains = function(x, y) {
   }
 };
 
-
-
 Rectangle.prototype.intersects = function(shape) {
   if (this.contains(shape.x, shape.y) ||
       this.contains(shape.x + shape.w, shape.y) ||
