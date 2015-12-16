@@ -1,6 +1,5 @@
 //@codekit-prepend 'rectangle.js';
 
-// var iBlock = [new Rect(new Rectangle(positionX * (counter / 10), positionY));
 var positionX = window.innerWidth;
 
 //0
@@ -90,10 +89,10 @@ var iBlock = {
   'name' : 'iBlock',
   'color' : '#50E3C2',
   'number' : 1000,
-  "shape" : [[new Rectangle(positionX*0.3, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.4, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.6, tHeight, '#50E3C2')]
+  "shape" : [[new Rectangle(positionX*0.3, tHeight, '#50E3C2', tWidth-5, tHeight),
+             new Rectangle(positionX*0.4, tHeight, '#50E3C2', tWidth-5, tHeight),
+             new Rectangle(positionX*0.5, tHeight, '#50E3C2', tWidth-5, tHeight),
+             new Rectangle(positionX*0.6, tHeight, '#50E3C2', tWidth-5, tHeight)]
              // ],
 
              // [new Rectangle(positionX*0.5, tHeight*0, '#50E3C2'),

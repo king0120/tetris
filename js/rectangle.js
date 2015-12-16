@@ -1,12 +1,8 @@
 
-
-
-//declared these useful globals since this is the very beginning of the app.
-
 //This sets the global size for an individual block.  the tWidth is set
 //slightly smaller to avoid collision detection bugs.
-var tWidth= (window.innerWidth-1) / 10;
-var tHeight= (window.innerHeight-1) / 20;
+var tWidth= Math.floor((window.innerWidth-1) / 10);
+var tHeight= (window.innerHeight) / 20;
 
 var Rectangle = function(x, y, color, w, h) {
   this.name = 0;
@@ -22,7 +18,7 @@ var Rectangle = function(x, y, color, w, h) {
   //made those perimeters available, but I created these default values to
   //make it easier to declare new rectangles
   if (w === undefined || h === undefined) {
-    this.w = tWidth-2;
+    this.w = tWidth-4;
     this.h = tHeight;
   }
 
@@ -49,12 +45,9 @@ var Rectangle = function(x, y, color, w, h) {
   };
 
   this.drop = function(){
-    //var test=this;
     var fall = this.y;
     fall+= tHeight/20;
     this.y = fall;
-    //window.console.log(test.y);
-   // test.y += tHeight/18;
   };
 };
 

@@ -1,4 +1,4 @@
-//@codekit-prepend 'win.js';
+//@codekit-prepend 'rotate.js';
 
 
 var canvas = document.getElementById('canvas');
@@ -19,7 +19,9 @@ var fallen = [new Rectangle(0, canvas.height, 'black', canvas.width, tHeight),
   new Rectangle(canvas.width, tHeight, 'black', 100, canvas.height),
   new Rectangle(-10, tHeight, 'black', 10, canvas.height)
 ];
-
+fallen[0].name = 'floor';
+fallen[1].name = 'wall';
+fallen[2].name = 'wall';
 
 
 //this.clear allows the canvas to animate.  Each time the canvas is wiped
@@ -27,25 +29,15 @@ var fallen = [new Rectangle(0, canvas.height, 'black', canvas.width, tHeight),
 
 function clear() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  fallen[0].drawFallen(ctx);
-  fallen[1].drawFallen(ctx);
-  fallen[2].drawFallen(ctx);
   for (var i = 0; i < fallen.length; i++) {
-    fallen[i].color = 'purple';
     fallen[i].drawFallen(ctx);
   }
 }
 
-//for use in key controls
 var moveLeft = function(b) {
 
   for (var i = 0; i < b.length; i++) {
-    // if (b[0].x>0 && b[1].x>0 && b[2].x>0 && b[3].x>0){
     b[i].x -= tWidth;
-    //   }
-    // else {
-    //   console.log('TOO FAR!');
-    // }
   }
 };
 var moveRight = function(b) {
@@ -65,40 +57,28 @@ var keyControls = function(toMove) {
     e = e || window.event;
     switch (e.which || e.keyCode) {
       case 65: //the letter A
-        window.console.log("left");
         moveLeft(toMove);
         break;
       case 37: //left arrow key
-        window.console.log("left");
         moveLeft(toMove);
         break;
       case 87: //the letter W
-        window.console.log("Up");
         rotate(toMove);
         break;
       case 38: //up arrow key
-
           rotate(toMove);
         break;
       case 68: //the letter D
-        window.console.log("Right");
           moveRight(toMove);
         break;
       case 39: //right arrow key
-        window.console.log(toMove);
-        window.console.log("tWidth " + tWidth);
         moveRight(toMove);
         break;
       case 82: //the letter S
-        window.console.log("Down");
         moveDown(toMove);
-
-        // this.y += tHeight;
         break;
       case 40: //down arrow key
-        window.console.log("Down");
         moveDown(toMove);
-        //   this.y += tHeight;
         break;
       default:
         window.console.log(e.which);
@@ -150,21 +130,23 @@ function next() {
   randomRotate = Math.floor(Math.random() * 3);
   tetrino = randomTetrino();
   var nextPic = document.getElementById('next');
-  console.log(tetrino.name);
   nextPic.innerHTML = "<img src='images/" + tetrino.name + ".png' alt='" + tetrino.name + "'>";
 }
 
 function stats(tet) {
   if (tet) {
     tet.number++;
-    var stats = document.getElementById(tet.name);
-    stats.innerHTML = tet.number;
+    var stats1 = document.getElementById(tet.name);
+    stats1.innerHTML = tet.number;
   }
 }
 
 function newRect() {
   var start = document.getElementById('start');
-  start.style.display = 'none';
+  start.addEventListener("click", function(event){
+    event.preventDefault();
+  });
+  start.innerHTML = " ";
   for (var i = 0; i < tetrino.shape[0].length; i++) {
     addShape([tetrino.shape[0][i], tetrino.name]);
   }
@@ -172,17 +154,51 @@ function newRect() {
   next();
 }
 
-function devRect(shape) {
-  for (var i = 0; i < shape.length; i++) {
-    addShape(shape[i]);
+var score = 0;
+var count = 0;
+var index = -1;
+var lines = 0;
+
+function checkLine(low, high){
+    fallen = fallen.sort(function(a, b){return b.y-a.y;});
+    count = 0;
+    index = 0;
+    for (var i = 0; i<fallen.length; i++){
+      if (fallen[i].y <= high && fallen[i].y > low && fallen[i].x > 0 && fallen[i].name!=='floor'){
+        count ++;
+      } else {
+        index++;
+      }
+    }
+    fallen.forEach(function(x){
+    });
+    return count;
+  }
+
+function checkWin(){
+  for (var i=0; i<20; i++){
+    var checked = checkLine(tHeight*i, tHeight*(i+1));
+    if (checked>=10){
+      window.console.log("SCORE!");
+      score += 200;
+      lines ++;
+      var spliced = fallen.splice(index-10, 10);
+      window.console.log("Spliced these values: " + index-10 + " to " + index);
+      document.getElementById('lines').innerHTML = lines;
+      document.getElementById('score').innerHTML = score;
+      for (var d = index-10; d < fallen.length; d++){
+        fallen[d].y -= tHeight;
+      }
+    }
+    window.console.log(i + " count: " + count);
   }
 }
 
-//For dev testing
-// var ycount = 0;
-//This is the core function.  It draws the game out each time setInterval is called
 
-var draw = function(canvas) {
+
+
+
+var draw = function() {
 
   //vars declared for readability.
   clear();
@@ -196,33 +212,33 @@ var draw = function(canvas) {
         //Each time the falling block approaches the floor, the function checks
         //to see if the intersection function is true at any point.
         if (shapes[j].intersects(fallen[i])) {
-          //THIS IS WHERE MY BUG WAS!!!! Now how do I reset the speed?
-          //I think I need to set it near this.clear
 
           shapes[j].y = Math.floor(fallen[i].y) - Math.floor(fallen[i].h);
           //Once a shape intersects, this pushes it into the fallen array and
           //out of the shapes array.
 
           shapes[j].hit = true;
-          shapes[0].y = Math.floor(shapes[0].y);
-          shapes[1].y = Math.floor(shapes[1].y);
-          shapes[2].y = Math.floor(shapes[2].y);
-          shapes[3].y = Math.floor(shapes[3].y);
+          shapes[0].y = Math.ceil(shapes[0].y);
+          shapes[1].y = Math.ceil(shapes[1].y);
+          shapes[2].y = Math.ceil(shapes[2].y);
+          shapes[3].y = Math.ceil(shapes[3].y);
           fallen.push(shapes[0]);
           fallen.push(shapes[1]);
           fallen.push(shapes[2]);
           fallen.push(shapes[3]);
           shapes.splice(0, 4);
           checkWin();
-          window.console.log(fallen[i].y);
           if (fallen[i].y < 60) {
-            alert('Game Over');
-            console.log('DELETE');
-            fallen.length = 3;
+            window.alert('Game Over');
+            fallen = [new Rectangle(0, canvas.height, 'black', canvas.width, tHeight),
+              new Rectangle(canvas.width, tHeight, 'black', 100, canvas.height),
+              new Rectangle(-10, tHeight, 'black', 10, canvas.height)
+              ];
             return fallen.length;
           }
 
-
+          //The code below is for a future feature.  Currently the random falling tetrino
+          //is only one configuration
           tBlock.shape = [[new Rectangle(positionX*0.4, tHeight, "#9013FE"),  //upside down T
              new Rectangle(positionX*0.3, tHeight*2, "#9013FE"),
              new Rectangle(positionX*0.4, tHeight*2, "#9013FE"),
@@ -297,10 +313,10 @@ var draw = function(canvas) {
           ];
 
           iBlock.shape = [
-            [new Rectangle(positionX * 0.3, tHeight, '#50E3C2'),
-              new Rectangle(positionX * 0.4, tHeight, '#50E3C2'),
-              new Rectangle(positionX * 0.5, tHeight, '#50E3C2'),
-              new Rectangle(positionX * 0.6, tHeight, '#50E3C2')
+            [new Rectangle(positionX * 0.3, tHeight, '#50E3C2', tWidth-5, tHeight),
+              new Rectangle(positionX * 0.4, tHeight, '#50E3C2', tWidth-5, tHeight),
+              new Rectangle(positionX * 0.5, tHeight, '#50E3C2', tWidth-5, tHeight),
+              new Rectangle(positionX * 0.6, tHeight, '#50E3C2', tWidth-5, tHeight)
             ],
 
             // [new Rectangle(positionX * 0.5, tHeight, '#50E3C2'),
@@ -374,10 +390,10 @@ var draw = function(canvas) {
             // ]
           ];
 
-          lBlock.shape = [[new Rectangle(positionX*0.3, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.4, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.5, tHeight, '#50E3C2'),
-             new Rectangle(positionX*0.6, tHeight, '#50E3C2')],
+          lBlock.shape = [[new Rectangle(positionX*0.5, tHeight, '#E59512'),
+             new Rectangle(positionX*0.3, tHeight*2, '#E59512'),
+             new Rectangle(positionX*0.4, tHeight*2, '#E59512'),
+             new Rectangle(positionX*0.5, tHeight*2, '#E59512')],
 
              // [new Rectangle(positionX*0.5, tHeight*0, '#50E3C2'),
              // new Rectangle(positionX*0.5, tHeight*1, '#50E3C2'),
@@ -395,7 +411,7 @@ var draw = function(canvas) {
              // new Rectangle(positionX*0.5, tHeight*3, '#50E3C2')]
              ];
 
-          newRect();
+          setInterval(newRect(), 400);
           return;
         }
       } //end for i loop
@@ -416,7 +432,6 @@ var draw = function(canvas) {
 }; //end Draw
 
 //Set interval causes the app to run through every x milliseconds depending on this.interval.
-//Not 100% sure why I needed to make this a variable to get this to work?
 
 var myState = canvas;
 myState.interval = 33 / 2;
