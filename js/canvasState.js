@@ -14,7 +14,7 @@ var ctx = canvas.getContext('2d');
 //Falling shapes are in the this.shapes array.  Each time the canvas draws,
 //it moves this array closer to the this.fallen array.
 var shapes = [];
-
+var level=1;
 var fallen = [new Rectangle(0, tHeight * 27, 'black', canvas.width, tHeight)];
 var floor = [new Rectangle(0, tHeight * 20, 'black', canvas.width, tHeight)];
 
@@ -32,15 +32,18 @@ function clear() {
 }
 
 var moveLeft = function(b) {
-
-  for (var i = 0; i < b.length; i++) {
-    b[i].x -= tWidth;
+  if (b[0].x>positionX*0.1 && b[1].x>positionX*0.1 && b[2].x>positionX*0.1 && b[3].x>positionX*0.1){
+    for (var i = 0; i < b.length; i++) {
+      b[i].x -= tWidth;
+    }
   }
 };
 var moveRight = function(b) {
-  for (var i = 0; i < b.length; i++) {
-    b[i].x += tWidth;
-  }
+  if (b[0].x<positionX * 0.8 && b[1].x<positionX * 0.8 && b[2].x<positionX * 0.8 && b[3].x<positionX * 0.8){
+    for (var i = 0; i < b.length; i++) {
+      b[i].x += tWidth;
+    }
+   }
 };
 var moveDown = function(b) {
   for (var i = 0; i < b.length; i++) {
@@ -151,11 +154,13 @@ function newRect() {
   next();
 }
 
-var score = 0;
+var score = 000000;
 var count = 0;
 var index = -1;
 var lines = 0;
 var deleteArray = [];
+
+
 
 function checkLine(low, high) {
   fallen = fallen.sort(function(a, b) {
@@ -176,22 +181,29 @@ function checkLine(low, high) {
     }
   }
 }
+function clearLine(){
+
+}
 
 function checkWin() {
   for (var i = 0; i < 20; i++) {
     var checked = checkLine(tHeight * i, tHeight * (i + 1));
     if (checked >= 10) {
-      var toSplice = i;
       for (var d = fallen.indexOf(deleteArray[9]); d < fallen.length; d++){
         fallen[d].y += Math.ceil(tHeight);
       }
       for (var w = 0; w < deleteArray.length; w++) {
           fallen.splice(fallen.indexOf(deleteArray[w]), 1);
           window.console.log("Spliced at " + w);
+
       }
       deleteArray.length = 0;
-      score += 200;
+      score += 2000;
       lines++;
+      if (lines%5===0){//dev
+        level++;
+        document.getElementById('level').innerHTML = level;
+      }
       //var spliced = fallen.splice(parseInt(index)-10, 10);
       window.console.log("Spliced these values: " + parseInt(index - 10) + " to " + index);
       document.getElementById('lines').innerHTML = lines;
@@ -238,11 +250,6 @@ var draw = function() {
           fallen.push(shapes[3]);
           shapes.splice(0, 4);
           checkWin();
-          if (fallen[i].y < 60) {
-            window.alert('Game Over');
-            fallen.length = 0;
-            return fallen.length;
-          }
 
           //The code below is for a future feature.  Currently the random falling tetrino
           //is only one configuration

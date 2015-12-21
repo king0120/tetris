@@ -36,7 +36,6 @@ var Rectangle = function(x, y, color, w, h) {
 
   this.draw = function() {
     var fall = this.y;
-    fall+= tHeight/18;
     this.ctx.fillStyle = this.color;
     this.ctx.lineWidth= "3";
     this.ctx.strokeStyle = 'black';
@@ -46,7 +45,75 @@ var Rectangle = function(x, y, color, w, h) {
 
   this.drop = function(){
     var fall = this.y;
-    fall+= tHeight/20;
+    switch(level){
+      case 1:
+        fall+= tHeight/30;
+        break;
+      case 2:
+        fall+= tHeight/27.5;
+        break;
+      case 3:
+        fall+= tHeight/25;
+        break;
+      case 4:
+        fall+= tHeight/22.5;
+        break;
+      case 5:
+        fall+= tHeight/20;
+        break;
+      case 6:
+        fall+= tHeight/17.5;
+        break;
+      case 7:
+        fall+= tHeight/15;
+        break;
+      case 8:
+        fall+= tHeight/12.5;
+        break;
+      case 9:
+        fall+= tHeight/10;
+        break;
+      case 10:
+        fall+= tHeight/7.5;
+        break;
+      case 11:
+        fall+= tHeight/5;
+        break;
+      case 12:
+        fall+= tHeight/2.5;
+        break;
+      case 13:
+        fall+= tHeight;
+        break;
+      case 14:
+        fall+= tHeight*1.25;
+        break;
+      case 15:
+        fall+= tHeight*1.5;
+        break;
+      case 16:
+        fall+= tHeight*1.75;
+        break;
+      case 17:
+        fall+= tHeight*2;
+        break;
+      case 18:
+        fall+= tHeight*2.25;
+        break;
+      case 19:
+        fall+= tHeight*2.5;
+        break;
+      case 20:
+        fall+= tHeight*2.75;
+        break;
+      case 30:
+        level = 0;
+        window.alert('Game Over');
+        fallen.length = 0;
+        return fallen.length;
+
+    }
+
     this.y = fall;
   };
 };
