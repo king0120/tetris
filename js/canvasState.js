@@ -45,10 +45,29 @@ var moveRight = function(b) {
     }
    }
 };
-var moveDown = function(b) {
-  for (var i = 0; i < b.length; i++) {
-    b[i].y += tHeight;
+
+function checkFallen(shape){
+  for (var f = 0; f < fallen.length; f++){
+    if (shape.y < fallen[f].y-tHeight*3 || shape.x !== fallen[f].x){
+      window.console.log(shape.y);
+    } else {
+      return false;
+    }
   }
+  return true;
+}
+
+var moveDown = function(b) {
+  if (checkFallen(shapes[0]) && checkFallen(shapes[1]) && checkFallen(shapes[2]) && checkFallen(shapes[3])){
+
+      if (b[0].y<(floor[0].y - tHeight*4) && b[1].y<(floor[0].y - tHeight*4) && b[2].y<(floor[0].y - tHeight*4) && b[3].y<(floor[0].y - tHeight*4)){
+        b[0].y += tHeight;
+        b[1].y += tHeight;
+        b[2].y += tHeight;
+        b[3].y += tHeight;
+      }
+
+}
 };
 
 //Sets key bindings for controlling the tetrinos.
@@ -181,9 +200,6 @@ function checkLine(low, high) {
     }
   }
 }
-function clearLine(){
-
-}
 
 function checkWin() {
   for (var i = 0; i < 20; i++) {
@@ -200,17 +216,14 @@ function checkWin() {
       deleteArray.length = 0;
       score += 2000;
       lines++;
-      if (lines%5===0){//dev
+      if (lines%5===0){
         level++;
         document.getElementById('level').innerHTML = level;
       }
-      //var spliced = fallen.splice(parseInt(index)-10, 10);
       window.console.log("Spliced these values: " + parseInt(index - 10) + " to " + index);
       document.getElementById('lines').innerHTML = lines;
       document.getElementById('score').innerHTML = score;
-
     }
-    //window.console.log(i + " count: " + count);
   }
 }
 
@@ -438,7 +451,7 @@ var draw = function() {
         //of the way down the board. This also gives the incremental falling
         //visuals common for tetris.
 
-
+        // window.console.log(".y coordinates: " + shapes[0].y + " " + shapes[1].y+ " " + shapes[2].y + " " + shapes[3].y);
         keyControls(shapes);
         //finally, this function draws the rectangle.
         shapes[j].draw();
